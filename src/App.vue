@@ -1,17 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button-group>
+      <tik-button type="warn" size="small">删除</tik-button>
+      <tik-button type="success" size="default" @click="clickBtn">弹出</tik-button>
+    </button-group>
+    <tik-modal tips="Tips" :show.sync="show" @confirm-click="click">
+      Hello, Are you ok ? <br/>
+      Hello, Are you ok ? <br/>
+      Hello, Are you ok ? <br/>
+      Hello, Are you ok ? <br/>
+      Hello, Are you ok ? <br/>
+      Hello, Are you ok ? <br/>
+      Hello, Are you ok ? <br/>
+      Hello, Are you ok ? <br/>
+    </tik-modal>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import TikButton from "./components/TikButton/TikButton";
+import ButtonGroup from "./components/TikButton/ButtonGroup";
+import TikModal from "./components/TikModal/TikModal";
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  components: {TikModal, ButtonGroup, TikButton},
+  data() {
+    return {
+      show: true
+    }
+  },
+  methods: {
+    click() {
+      this.show = false;
+    },
+    clickBtn() {
+      this.show = true;
+    }
   }
 }
 </script>
